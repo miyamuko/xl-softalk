@@ -30,11 +30,11 @@
 
 (in-package :xl-softalk)
 
-(export '(speek
-          speek-file
-          speek-selection
-          speek-region
-          speek-buffer
+(export '(speak
+          speak-file
+          speak-selection
+          speak-region
+          speak-buffer
 
           list-voice-library
           add-dictionary
@@ -49,29 +49,29 @@
           close
           ))
 
-(defun speek (text)
+(defun speak (text)
   (interactive "sText: ")
   (run (voice-options `(/W ,text))))
 
-(defun speek-file (file)
+(defun speak-file (file)
   (interactive "fFile: ")
-  (speek (read-file-into-string file)))
+  (speak (read-file-into-string file)))
 
-(defun speek-selection ()
+(defun speak-selection ()
   (interactive)
   (when (get-selection-type)
     (selection-start-end (s e)
-      (speek-region s e))))
+      (speak-region s e))))
 
-(defun speek-region (s e)
+(defun speak-region (s e)
   (interactive "r")
   (if (< e s) (rotatef s e))
   (let ((c (buffer-substring s e)))
-    (speek c)))
+    (speak c)))
 
-(defun speek-buffer ()
+(defun speak-buffer ()
   (interactive)
-  (speek-region (point-min) (point-max)))
+  (speak-region (point-min) (point-max)))
 
 (defun list-voice-library ()
   (parse-voice-library

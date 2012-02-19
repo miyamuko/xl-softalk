@@ -12,7 +12,7 @@
 user> (require "xl-softalk")
 t
 
-user> (softalk:speek "xyzzy はテキストエディタのようなものです。")
+user> (softalk:speak "xyzzy はテキストエディタのようなものです。")
 t
 
 user> (softalk:list-voice-library)
@@ -29,7 +29,7 @@ user> (let ((softalk:*volume* (* softalk:*speed* 1.2))
             (softalk:*speed* (* softalk:*speed* 0.5))
             (softalk:*library* 8)
             (softalk:*voice* 0))
-        (softalk:speek "xyzzy はテキストエディタのようなものです。"))
+        (softalk:speak "xyzzy はテキストエディタのようなものです。"))
 t
 
 user> (softalk:stop :now t)
@@ -42,10 +42,10 @@ t
 ### コマンド
 
 ```
-M-x softalk:speek
-M-x softalk:speek-selection
-M-x softalk:speek-region
-M-x softalk:speek-buffer
+M-x softalk:speak
+M-x softalk:speak-selection
+M-x softalk:speak-region
+M-x softalk:speak-buffer
 ```
 
 
