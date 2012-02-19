@@ -13,4 +13,5 @@ document:
 depends:
   - ansify
   - ansi-loop
+  - setf-values
   - xl-alexandria

@@ -9,6 +9,7 @@
 ### API
 
 ```lisp
+;;; xyzzy lisp REPL
 user> (require "xl-softalk")
 t
 
@@ -25,7 +26,7 @@ user> (softalk:list-voice-library)
 user> (softalk:add-dictionary "xyzzy" "くさいじじい")
 t
 
-user> (let ((softalk:*volume* (* softalk:*speed* 1.2))
+user> (let ((softalk:*volume* (* softalk:*volume* 1.2))
             (softalk:*speed* (* softalk:*speed* 0.5))
             (softalk:*library* 8)
             (softalk:*voice* 0))
@@ -96,7 +97,9 @@ xl-softalk でゆっくりしていってね！
 
 ## KNOWN BUGS
 
-なし。
+  * SofTalk が起動していない状態で `(softalk:stop)` とかすると
+    SofTalk が起動して画面が表示される。
+
 
 要望やバグは [GitHub Issues] か [@miyamuko] まで。
 
