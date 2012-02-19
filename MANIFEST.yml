@@ -1,0 +1,16 @@
+package: xl-softalk
+version: 0.0.1
+
+sources:
+  include:
+    - site-lisp/xl-softalk/**/*.l
+  exclude:
+    - site-lisp/xl-softalk/**/test/*.l
+
+document:
+  - README.md
+
+depends:
+  - ansify
+  - ansi-loop
+  - xl-alexandria
