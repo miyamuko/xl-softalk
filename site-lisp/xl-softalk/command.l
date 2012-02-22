@@ -35,7 +35,7 @@
           *softalk-exe*
           *softalkw-exe*
 
-          *voice-quality*
+          *quality*
           *volume*
           *speed*
           *library*
@@ -83,8 +83,8 @@
 ;;   選択可能な声をXML形式で出力
 
 
-(defvar *voice-quality* nil
-  "声質を 0-4 で指定 (/Q オプション)
+(defvar *quality* 3
+  "声質を 0-4 で指定 (/Q オプション)。デフォルトは 3
 0: 平仮名変換・抑揚（英語読み）なし
 1: 抑揚（英語読み）なし
 2: 平仮名変換あり
@@ -117,7 +117,7 @@
                (push (list k v) r))))
       (opt "/T" *library*)
       (opt "/U" *voice*)
-      (opt "/Q" *voice-quality*)
+      (opt "/Q" *quality*)
       (opt "/V" *volume*)
       (opt "/S" *speed*))
     (apply #'options (append (nreverse r) additional-options))))

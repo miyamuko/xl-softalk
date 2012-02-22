@@ -26,6 +26,7 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (require "xl-softalk/package")
   (require "xl-softalk/command")
+  (require "xl-softalk/library")
   )
 
 (in-package :xl-softalk)
@@ -36,7 +37,6 @@
           speak-region
           speak-buffer
 
-          list-voice-library
           add-dictionary
 
           play
@@ -49,38 +49,45 @@
           close
           ))
 
-(defun speak (text)
+(defun speak (text &key library voice quality volume speed)
   (interactive "sText: ")
-  (run (voice-options `(/W ,text))))
+  (multiple-value-bind (library voice)
+      (select-voice-library (or library *library*) (or voice *voice*))
+    (let ((*library* (car library))
+          (*voice* (car voice))
+          (*quality* (or quality *quality*))
+          (*volume* (or volume *volume*))
+          (*speed* (or speed *speed*)))
+      (check-type text string)
+      (check-type *library* (integer 7 10))
+      (check-type *voice* (integer 0 *))
+      (check-type *quality* (integer 0 3))
+      (check-type *volume* (integer 0 100))
+      (check-type *speed* (integer 1 200))
+      (run (voice-options `(/W ,text))))))
 
-(defun speak-file (file)
+(defun speak-file (file &rest args &key library voice quality volume speed)
   (interactive "fFile: ")
-  (speak (read-file-into-string file)))
+  (apply #'speak (read-file-into-string file) args))
 
-(defun speak-selection ()
+(defun speak-selection (&rest args &key library voice quality volume speed)
   (interactive)
   (when (get-selection-type)
-    (selection-start-end (s e)
-      (speak-region s e))))
+    (selection-start-end (start end)
+      (apply #'speak (buffer-substring start end) args))))
 
-(defun speak-region (s e)
+(defun speak-region (start end &rest args &key library voice quality volume speed)
   (interactive "r")
-  (if (< e s) (rotatef s e))
-  (let ((c (buffer-substring s e)))
-    (speak c)))
+  (if (< end start) (rotatef start end))
+  (apply #'speak (buffer-substring start end) args))
 
 (defun speak-buffer ()
   (interactive)
   (speak-region (point-min) (point-max)))
 
-(defun list-voice-library ()
-  (parse-voice-library
-   (call-with-temp-file #'(lambda (tmp)
-                            (run (options `(/Z ,tmp))
-                                 :softalkw t :wait t))
-                        :output t)))
-
 (defun add-dictionary (keyword yomi &key (ignore-zenkaku-hankaku t))
+  (check-type keyword string)
+  (check-type yomi string)
   (let ((v (format nil "~A,~A,~:[True~;False~]" yomi keyword ignore-zenkaku-hankaku)))
     (run (options `(/P ,v)))))
 
