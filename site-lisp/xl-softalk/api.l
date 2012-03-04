@@ -136,15 +136,17 @@ LIBRARY および VOICE の指定は整数、文字列、シンボルで指定します。
   (interactive)
   (speak-region (point-min) (point-max)))
 
-(defun add-dictionary (keyword yomi &key (ignore-zenkaku-hankaku t))
+(defun add-dictionary (yomi word &optional (zenkaku-hankaku-sensitive *prefix-args*))
 "辞書に単語を追加します。
 
-* KEYWORD: 単語を指定します（漢字や英単語など）
-* YOMI: 読み上げ方をひらがなで指定します
-* IGNORE-ZENKAKU-HANKAKU: 全角半角の区別を無視するなら t"
-  (check-type keyword string)
+* YOMI: 読み方をひらがなで指定します
+* WORD: 単語を指定します（漢字や英単語など）
+* ZENKAKU-HANKAKU-SENSITIVE: 全角半角を区別するなら t。
+  デフォルトは前置引数なしだと nil、前置引数ありだと t"
+  (interactive "s読み(ひらがな): \ns単語: ")
   (check-type yomi string)
-  (let ((v (format nil "~A,~A,~:[True~;False~]" yomi keyword ignore-zenkaku-hankaku)))
+  (check-type word string)
+  (let ((v (format nil "~A,~A,~:[False~;True~]" yomi word zenkaku-hankaku-sensitive)))
     (run (options `(/P ,v)))))
 
 (defun play (&key now)
