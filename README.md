@@ -17,20 +17,22 @@ user> (softalk:speak "xyzzy はテキストエディタのようなものです�
 t
 
 user> (softalk:list-voice-library)
-(((7 . "AquesTalk") (0 . "女性１") (1 . "女性２") (2 . "男性１") (3 . "男性２") (4 . "ロボット") (5 . "中性") (6 . "機械") (7 . "特殊"))
+(((7 . "AquesTalk") (0 . "女性1") (1 . "女性2") (2 . "男性1") (3 . "男性2") (4 . "ロボット") (5 . "中性") (6 . "機械") (7 . "特殊"))
  ((8 . "SAPI") (0 . "Microsoft Anna - English (United States)"))
  ((9 . "Speech Platform") (0 . "Microsoft Server Speech Text to Speech Voice (ja-JP, Haruka)"))
  ((10 . "AquesTalk2") (0 . "aq_defo1.phont") (1 . "aq_f1b.phont") (2 . "aq_f1c.phont") (3 . "aq_huskey.phont") (4 . "aq_m3.phont") (5 . "aq_m4.phont") (6 . "aq_momo1.phont") (7 . "aq_rb2.phont") (8 . "aq_rm.phont") (9 . "aq_robo.phont") (10 . "aq_teto1.phont") (11 . "aq_yukkuri.phont"))
  )
 
-user> (softalk:add-dictionary "xyzzy" "くさいじじい")
+user> (softalk:speak "xyzzy はテキストエディタのようなものです。"
+                     :voice :haruka)
 t
 
-user> (let ((softalk:*volume* (* softalk:*volume* 1.2))
-            (softalk:*speed* (* softalk:*speed* 0.5))
-            (softalk:*library* 8)
-            (softalk:*voice* 0))
-        (softalk:speak "xyzzy はテキストエディタのようなものです。"))
+user> (softalk:add-dictionary "くさいじじい" "xyzzy")
+t
+
+user> (softalk:speak "xyzzy はテキストエディタのようなものです。"
+                     :volume (* softalk:*volume* 1.2)
+                     :speed (* softalk:*speed* 0.5))
 t
 
 user> (softalk:stop :now t)
@@ -43,10 +45,14 @@ t
 ### コマンド
 
 ```
-M-x softalk:speak
-M-x softalk:speak-selection
-M-x softalk:speak-region
-M-x softalk:speak-buffer
+M-x add-dictionary
+M-x open-help-file
+M-x open-home-page
+M-x speak
+M-x speak-buffer
+M-x speak-file
+M-x speak-region
+M-x speak-selection
 ```
 
 
