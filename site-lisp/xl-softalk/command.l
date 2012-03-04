@@ -147,15 +147,4 @@
     (map-slash-to-backslash (truename exe))))
 
 
-(defun parse-voice-library (xml)
-  (let (r)
-    (dolist (line (split-string xml #\LFD))
-      (cond ((string-matchp "<library opt=\"/T:\\(.+?\\)\" name=\"\\(.+?\\)\">" line)
-             (push (list (cons (match-integer 1) (match-string 2))) r))
-            ((string-matchp "<voice opt=\"/U:\\(.+?\\)\">\\(.+?\\)<" line)
-             (push (cons (match-integer 1) (match-string 2)) (car r)))
-            ))
-    (mapcar #'nreverse (nreverse r))))
-
-
 (provide "xl-softalk/command")

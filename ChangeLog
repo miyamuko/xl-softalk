@@ -1,3 +1,9 @@
+2012-03-04  MIYAMUKO Katsuyuki
+
+	* (select-voice-library): ライブラリの指定を改善
+	- 一意に特定できるならライブラリの指定を省略可能にした
+	- 全角半角の区別を無視してライブラリを探すようにした
+
 2012-02-22  MIYAMUKO Katsuyuki
 
 	* (speak): library voice quality volume speed をキーワード引数で

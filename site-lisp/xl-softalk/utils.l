@@ -44,5 +44,9 @@
 (defun match-integer (n)
   (parse-integer (match-string n)))
 
+(defun zenkaku-to-hankaku-string (s)
+  (when s
+    (map-to-half-width-string s :ascii t)))
+
 
 (provide "xl-softalk/utils")
