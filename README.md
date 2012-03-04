@@ -96,6 +96,24 @@ xl-softalk でゆっくりしていってね！
   [SofTalk]: http://www35.atwiki.jp/softalk/
 
 
+## REFERENCE
+
+リファレンスは以下を参照してください。
+
+  * https://github.com/miyamuko/xl-softalk/blob/master/reference/xl-softalk.md
+
+
+また、info-modoki-mode でリファレンスを引けるようにするには xl-softalk と
+xy-reference をインストールしたあとに、*scratch* バッファで以下を評価してください。
+
+```lisp
+(require :xy-reference)
+(xy-reference:2txt)
+```
+
+その後、xyzzy を再起動すればリファレンスを引けるようになります。
+
+
 ## TODO
 
 なし。
