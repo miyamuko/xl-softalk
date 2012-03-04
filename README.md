@@ -50,6 +50,7 @@ M-x open-help-file
 M-x open-home-page
 M-x speak
 M-x speak-buffer
+M-x speak-clipboard
 M-x speak-file
 M-x speak-region
 M-x speak-selection

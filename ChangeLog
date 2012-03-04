@@ -1,5 +1,7 @@
 2012-03-04  MIYAMUKO Katsuyuki
 
+	* (speak-clipboard): クリップボードの内容を読み上げる関数を追加
+
 	* リファレンス書いた
 
 	* (open-help-file): SofTalk のヘルプファイルを開く

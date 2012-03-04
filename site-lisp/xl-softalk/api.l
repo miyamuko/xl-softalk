@@ -36,6 +36,7 @@
           speak-selection
           speak-region
           speak-buffer
+          speak-clipboard
 
           add-dictionary
 
@@ -134,6 +135,13 @@ LIBRARY および VOICE の指定は整数、文字列、シンボルで指定します。
 オプションの説明は SPEAK 関数を参照してください。"
   (interactive)
   (speak-region (point-min) (point-max)))
+
+(defun speak-clipboard ()
+  "クリップボードの内容を読み上げます。
+
+オプションの説明は SPEAK 関数を参照してください。"
+  (interactive)
+  (speak (get-clipboard-data)))
 
 (defun add-dictionary (yomi word &optional (zenkaku-hankaku-sensitive *prefix-args*))
 "辞書に単語を追加します。

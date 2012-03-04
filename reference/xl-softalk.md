@@ -31,6 +31,7 @@
     * [open-home-page](#command-open-home-page)
     * [speak](#command-speak)
     * [speak-buffer](#command-speak-buffer)
+    * [speak-clipboard](#command-speak-clipboard)
     * [speak-file](#command-speak-file)
     * [speak-region](#command-speak-region)
     * [speak-selection](#command-speak-selection)
@@ -271,6 +272,13 @@ SofTalk のホームページをデフォルトブラウザで開きます。
 ### Command: <a name="command-speak-buffer"><em>speak-buffer</em></a>
 
 バッファを読み上げます。
+
+オプションの説明は [speak](#command-speak) 関数を参照してください。
+
+
+### Command: <a name="command-speak-clipboard"><em>speak-clipboard</em></a>
+
+クリップボードの内容を読み上げます。
 
 オプションの説明は [speak](#command-speak) 関数を参照してください。
 
