@@ -112,14 +112,13 @@ LIBRARY および VOICE の指定は整数、文字列、シンボルで指定します。
   (interactive "fFile: ")
   (apply #'speak (read-file-into-string file) args))
 
-(defun speak-selection (&rest args &key library voice quality volume speed)
+(defun speak-selection (start end &rest args &key library voice quality volume speed)
   "選択範囲を読み上げます。
 
 オプションの説明は SPEAK 関数を参照してください。"
-  (interactive)
-  (when (get-selection-type)
-    (selection-start-end (start end)
-      (apply #'speak (buffer-substring start end) args))))
+  (interactive "R")
+  (if (< end start) (rotatef start end))
+  (apply #'speak (buffer-substring start end) args))
 
 (defun speak-region (start end &rest args &key library voice quality volume speed)
   "リージョンを読み上げます。
