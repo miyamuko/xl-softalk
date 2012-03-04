@@ -43,13 +43,25 @@
           *hide*
           ))
 
-(defvar *softalk-url* "http://www35.atwiki.jp/softalk/")
+(defvar *softalk-url* "http://www35.atwiki.jp/softalk/"
+  "SofTalk のホームページの URL を指定。通常は変更する必要なし。")
+
 (defvar *softalk-directory* (merge-pathnames "softalk"
                                              ;; softalk は 32 bit プロセスなんで (x86) 優先
                                              (or (si:getenv "ProgramFiles(x86)")
-                                                 (si:getenv "PROGRAMFILES"))))
-(defvar *softalk-exe* "SofTalk.exe")
-(defvar *softalkw-exe* "softalkw.exe")
+                                                 (si:getenv "PROGRAMFILES")))
+  "SofTalk のインストールディレクトリを指定。
+
+デフォルト値は以下のどちらかなので、それ以外にインストールした場合は設定が必要。
+
+* c:/Program Files/softalk              (32bit 版 OS の場合)
+* c:/Program Files (x86)/softalk        (64bit 版 OS の場合)")
+
+(defvar *softalk-exe* "SofTalk.exe"
+  "SofTalk.exe のコマンド名を指定。通常は変更する必要なし。")
+
+(defvar *softalkw-exe* "softalkw.exe"
+  "softalkw.exe のコマンド名を指定。通常は変更する必要なし。")
 
 ;; - /P:読み
 ;;   読み（平仮名）・単語・全/半角を区別（True/False）をコンマ区切りで指定
@@ -85,10 +97,11 @@
 
 (defvar *quality* nil
   "声質を 0-4 で指定 (/Q オプション)。デフォルトは指定なし
-0: 平仮名変換・抑揚（英語読み）なし
-1: 抑揚（英語読み）なし
-2: 平仮名変換あり
-3: 平仮名変換・抑揚（英語読み）あり")
+
+* 0: 平仮名変換・抑揚（英語読み）なし
+* 1: 抑揚（英語読み）なし
+* 2: 平仮名変換あり
+* 3: 平仮名変換・抑揚（英語読み）あり")
 
 (defvar *volume* 50
   "音量を 0-100 で指定 (/V オプション)。デフォルトは 50")

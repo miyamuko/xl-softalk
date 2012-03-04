@@ -37,6 +37,16 @@
 (defparameter *voice-library-cache* nil)
 
 (defun list-voice-library (&key reload)
+  "音声ライブラリをリストで返します。
+
+音声ライブラリのリストは以下の形式です。
+
+  (((<library1 id> . <library1 name>) (<voice1 id> . <voice1 name>) (<voice2 id> . <voice2 name>) ...)
+   ((<library2 id> . <library2 name>) (<voice1 id> . <voice1 name>) (<voice2 id> . <voice2 name>) ...)
+   ...)
+
+SofTalk から取得したライブラリのリストは内部でキャッシュしています。
+新たに音声ライブラリをインストールした場合は RELOAD に non-nil を指定して実行してください。"
   (when (or reload (not *voice-library-cache*))
     (setf *voice-library-cache*
           (parse-voice-library

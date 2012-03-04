@@ -35,6 +35,8 @@
 (defconstant +xl-softalk-version+ "0.0.1")
 
 (defun xl-softalk-version ()
+  "xl-softalk のバージョンを返します。
+SofTalk 本体のバージョンではありません。"
   +xl-softalk-version+)
 
 
