@@ -1,5 +1,7 @@
 2012-03-04  MIYAMUKO Katsuyuki
 
+	* リファレンス書いた
+
 	* (open-help-file): SofTalk のヘルプファイルを開く
 
 	* (open-home-page): SofTalk のホームページをデフォルトブラウザで開く
