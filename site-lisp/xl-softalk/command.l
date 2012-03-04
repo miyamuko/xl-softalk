@@ -30,8 +30,7 @@
 
 (in-package :xl-softalk)
 
-(export '(*softalk-url*
-          *softalk-directory*
+(export '(*softalk-directory*
           *softalk-exe*
           *softalkw-exe*
 
@@ -42,9 +41,6 @@
           *voice*
           *hide*
           ))
-
-(defvar *softalk-url* "http://www35.atwiki.jp/softalk/"
-  "SofTalk のホームページの URL を指定。通常は変更する必要なし。")
 
 (defvar *softalk-directory* (merge-pathnames "softalk"
                                              ;; softalk は 32 bit プロセスなんで (x86) 優先

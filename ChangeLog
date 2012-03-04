@@ -1,5 +1,9 @@
 2012-03-04  MIYAMUKO Katsuyuki
 
+	* (open-help-file): SofTalk のヘルプファイルを開く
+
+	* (open-home-page): SofTalk のホームページをデフォルトブラウザで開く
+
 	* (*quality*): 声質はライブラリごとに適切な設定が異なるため
 	デフォルトは指定なしにした。
 	例) Haruka で平仮名変換・抑揚（英語読み）ありだとまともに読み上げてくれない

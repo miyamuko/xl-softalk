@@ -27,6 +27,7 @@
 
 (require "xl-softalk/version")
 (require "xl-softalk/api")
+(require "xl-softalk/misc")
 
 (provide "xl-softalk")
 
