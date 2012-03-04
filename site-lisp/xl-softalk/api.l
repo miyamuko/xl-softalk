@@ -91,10 +91,11 @@ LIBRARY および VOICE の指定は整数、文字列、シンボルで指定します。
   (when (and library (not voice))
     (error ":library のみの指定はできません。:voice も指定してください。"))
   (multiple-value-bind (library voice)
-      (when voice
-        (select-voice-library library voice))
-    (let ((*library* (or (car library) *library*))
-          (*voice* (or (car voice) *voice*))
+      (if voice
+          (select-voice-library library voice)
+        (select-voice-library *library* *voice*))
+    (let ((*library* (car library))
+          (*voice* (car voice))
           (*quality* (or quality *quality*))
           (*volume* (floor (or volume *volume*)))
           (*speed* (floor (or speed *speed*))))

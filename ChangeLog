@@ -1,5 +1,8 @@
 2012-03-04  MIYAMUKO Katsuyuki
 
+	* (speak, *library*, *voice*): *library* と *voice* にライブラリ名を
+	指定できるようにした
+
 	* (speak-clipboard): クリップボードの内容を読み上げる関数を追加
 
 	* リファレンス書いた
